@@ -30,3 +30,4 @@ WHERE  gender = 'M';
 | :---:   | :---: | :---: |
 | Donald | Waterfield   | M   |
 | Mickey | Baasha  | M   |
+| Jiji | Sharma   | M   |

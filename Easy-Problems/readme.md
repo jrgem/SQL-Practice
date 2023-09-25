@@ -53,3 +53,25 @@ WHERE allergies IS NULL;
 | Donald | Waterfield   |
 | Blair | Diaz  |
 | Thomas | ONeill   |
+
+- Showing patients with no allergies.
+
+**3. Show first name of patients that start with the letter 'C'.**
+```sql
+SELECT first_name
+FROM patients
+WHERE first_name LIKE 'C%';
+```
+
+**Steps:**
+- Select first name column.
+- Insert **WHERE** clause with condition to filter `first_name` starting with 'C' using the **LIKE** case insensitive exact string comparison.
+- Followed by **%** as it can be used anywhere in a string to match a sequence of zero or more characters.
+
+**Solution:**
+| first_name |
+| :---:   |
+| Charles |
+| Cedric |
+| Charles |
+| Cross |

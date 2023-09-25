@@ -34,9 +34,15 @@ WHERE  gender = 'M';
 
 - Showing male patients only.
 
+
 **2. Show first name and last name of patients who do not have allergies.**
 ```sql
 SELECT first_name, last_name
 FROM patients
 WHERE allergies IS NULL;
+```
 
+**Steps:**
+- Select name columns.
+- Inset **WHERE** clause with condition to filter whether patients have/do not have allergies using **IS NULL**.
+- The `allergies` column shows the type of allergy a patient has or a **NULL** if no allergy is present.

@@ -16,4 +16,4 @@ Use hospital database data to answer easy-level questions about patients, admiss
 ## Questions and Solutions
 
 **1. Show first name, last name, and gender of [atients whose gender is 'M'.**
-- sss
+`ssss`

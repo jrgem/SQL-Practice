@@ -21,4 +21,4 @@ FROM   patients
 WHERE  gender = 'M';
 ```
 
-** Steps:
+**Steps:**

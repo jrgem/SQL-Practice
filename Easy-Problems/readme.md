@@ -14,8 +14,8 @@ Use hospital database data to answer easy-level questions about patients, admiss
 
 ## Questions and Solutions
 
-**1. Show first name, last name, and gender of patients whose gender is 'M'.**SQL
-```
+**1. Show first name, last name, and gender of patients whose gender is 'M'.**
+```SQL
 SELECT first_name, last_name, gender
 FROM   patients
 WHERE  gender = 'M';

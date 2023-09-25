@@ -23,6 +23,9 @@ WHERE  gender = 'M';
 
 **Steps:**
 - Select specific columns.
-- Insert **WHERE** clause with condition to filter the `gender` column to only display male patients using **=** operator for exact string comparison.
+- Insert **WHERE** clause with condition to filter the `gender` column to only display male patients using the **=** operator for exact string comparison.
 
 **Solution:**
+| first_name | last_name   | gender    |
+| :---:   | :---: | :---: |
+| Seconds | 301   | 283   |

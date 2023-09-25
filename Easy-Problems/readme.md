@@ -46,3 +46,10 @@ WHERE allergies IS NULL;
 - Select name columns.
 - Inset **WHERE** clause with condition to filter whether patients have/do not have allergies using **IS NULL**.
 - The `allergies` column shows the type of allergy a patient has or a **NULL** if no allergy is present.
+
+**Solution:**
+| first_name | last_name   |
+| :---:   | :---: |
+| Donald | Waterfield   |
+| Blair | Diaz  |
+| Thomas | ONeill   |

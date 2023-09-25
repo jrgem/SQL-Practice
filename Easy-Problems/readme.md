@@ -28,4 +28,5 @@ WHERE  gender = 'M';
 **Solution:**
 | first_name | last_name   | gender    |
 | :---:   | :---: | :---: |
-| Seconds | 301   | 283   |
+| Donald | Waterfield   | M   |
+| Mickey | Baasha  | M   |

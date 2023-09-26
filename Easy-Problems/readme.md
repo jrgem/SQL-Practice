@@ -330,3 +330,33 @@ WHERE  city = 'Hamilton AND allergies IS NOT NULL;
 | John       | Farley         | Gluten       |
 | Sam        | Threep         | Sulpha       |
 - Showing **5** of **1046** results.
+
+**17. Based on cities where our patient lives in, write a query to display the list of unique city starting with a vowel (a, e, i, o, u). Show the result order in ascending by city.**
+```sql
+SELECT DISTINCT city
+FROM     patients
+WHERE    city LIKE 'a%'
+  OR     city LIKE 'e%'
+  OR     city LIKE 'i%'
+  OR     city LIKE 'o%'
+  OR     city LIKE 'u%'
+ORDER BY city ASC;
+```
+
+**Steps:**
+- **SELECTING** `city` column with **DISTINCT** unique values.
+- **WHERE** function declaring constraint where `city` starts with vowels **a, e, i, o and u** each followed with **%** to match following string.
+- **ORDERED BY** `city` in an **ascending** manner.
+
+**Solution:**
+|    city          | 
+|   :---:          |
+| Ajax             |    
+| Ancaster         |    
+| Athens           |
+| Edmonton         |
+| Elmira           |
+| Elmwood          |
+| Inverness        |
+| Oakwood          |
+- Showing **8** of **15** results.

@@ -1,8 +1,8 @@
 # Standard Problems 🟡
 
 ## Table of Contents
-+ [Task]
-+ [Entity]
++ [Task](https://github.com/jrgem/SQL-Practice/tree/main/Standard-Problems#task)
++ [Entity](https://github.com/jrgem/SQL-Practice/tree/main/Standard-Problems#entity-relationship-schema)
 
 ## Task
 Use hospital database data to answer standard-level questions about patients, admissions and doctors.                   

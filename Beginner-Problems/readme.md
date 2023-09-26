@@ -287,7 +287,7 @@ WHERE  province_id = 'NS';
 | Port Hawkesbury  |    
 | Halifax          |    
 | Inverness        |
-- Showing **53** of **3** results.
+- Showing **3** of **3** results.
 
 **15. Write a query to find the first_name, last_name and birth date of patients who have height greater than 160 and weight greater than 70.**
 ```sql

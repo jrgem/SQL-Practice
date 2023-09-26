@@ -13,11 +13,80 @@ Use hospital database data to answer standard-level questions about patients, ad
 </p>
 
 **1. Show unique birth years from patients and order them by ascending.**
+```sql
+SELECT DISTINCT YEAR(birth_date) AS birth_year
+FROM     patients
+GROUP BY birth_year;
+```
+**Steps:**
+- Need to select unique values from `birth_date` column using **DISTINCT**.
+- Followed by enclosing `birth_date` with **YEAR** function to only gather years resulting in `birth_years’ **alias**.
+- Ordering end results by `birth_years` that automatically orders in an ascending manner.
+
+**Solution:**
+
+|  birth_years  |
+|  :---:        |
+|  1918          |
+|  1923          |
+|  1925          |
+|  1926          |
+|  1927          |
+|  1928          |
+
+- Displaying **6** of **93** results.
 
 **2. Show unique first names from the patients table which only occurs once in the list.
 For example, if two or more people are named 'John' in the first_name column then don't include their name in the output list. If only 1 person is named 'Leo' then include them in the output.**
+```sql
+SELECT first_name
+FROM   patients
+GROUP BY first_name
+     HAVING COUNT (first_name) = 1;
+```
+
+**Steps:**
+- **SELECT** desired columns.
+- **GROUP BY** results using `first_name` column where names with same values will be grouped together.
+- **HAVING** statement is only paired with **GROUP BY** and in this case combined with **COUNT** aggregate function to display patient `first_name` that appear once.
+
+**Solution:**
+|  first_name  |
+|  :---:       |
+| Abby         |
+| Adelaide     |
+| Adelia       |
+| Akira        |
+| Albert       |
+| Aldo         |
+
+- Displaying **6** of **319** results.
+- There are 319 patients with unique first names.
 
 **3. Show patient_id and first_name from patients where their first_name start and ends with 's' and is at least 6 characters long.**
+```sql
+SELECT patient_id, first_name
+FROM   patients
+WHERE  first_name LIKE ’s____%s’;
+```
+
+**Steps:**
+- After **SELECTING** specific columns, a **WHERE** clause is needed to filter results.
+- Filtering `first_name` to select case insensitive exact string comparisons using **LIKE**.
+- The patient's `first_name` must begin and end with 's' using 2 characters. We are left with 4 and further inserted as 4 underscores and **%** to welcome `first_name` matching the filters that may also be longer than 6 characters.
+
+**Solution:**
+|  patient_id  |  first_name  |
+|  :---:       |  :---:       |
+| 496          |  Spiros      |
+| 629          |  Spiros      |
+| 648          | Stanislaus   |
+| 1273         | Stanislaus   |
+| 1789         | Seamus       |
+| 1926         | Stanislaus   |
+| 2258         | Spiros       |
+
+- Displaying **7** of **11** results.
 
 **4. Show patient_id, first_name, last_name from patients whose diagnosis is 'Dementia'.
 Primary diagnosis is stored in the admissions table.**

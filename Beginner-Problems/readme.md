@@ -3,6 +3,7 @@
 ## Table of Contents
 + [Task](https://github.com/jrgem/SQL-Practice/tree/main/Beginner-Problems#task/)
 + [Entity Relationship Schema](https://github.com/jrgem/SQL-Practice/tree/main/Beginner-Problems#entity-relationship-schema/)
++ [Questions & Solutions](https://github.com/jrgem/SQL-Practice/tree/main/Beginner-Problems#questions-and-solutions)
 
 ## Task
 Use hospital database data to answer easy-level questions about patients, admissions and doctors.

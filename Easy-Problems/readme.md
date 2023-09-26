@@ -1,4 +1,4 @@
-# Simple Problems 🟢
+# Easy Problems 🟢
 
 ## Table of Contents
 + [Task](https://github.com/jrgem/SQL-Practice/tree/main/Easy-Problems#table-of-contents/)

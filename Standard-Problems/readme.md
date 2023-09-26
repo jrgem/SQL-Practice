@@ -1,4 +1,4 @@
-# Standard Problems 🟡
+# Standard Level Problems 🟡
 
 ## Table of Contents
 + [Task](https://github.com/jrgem/SQL-Practice/tree/main/Standard-Problems#task)

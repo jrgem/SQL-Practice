@@ -36,6 +36,7 @@ GROUP BY birth_year;
 
 - Displaying **6** of **93** results.
 
+
 **2. Show unique first names from the patients table which only occurs once in the list.
 For example, if two or more people are named 'John' in the first_name column then don't include their name in the output list. If only 1 person is named 'Leo' then include them in the output.**
 ```sql
@@ -63,6 +64,7 @@ GROUP BY first_name
 - Displaying **6** of **319** results.
 - There are 319 patients with unique first names.
 
+
 **3. Show patient_id and first_name from patients where their first_name start and ends with 's' and is at least 6 characters long.**
 ```sql
 SELECT patient_id, first_name
@@ -88,57 +90,158 @@ WHERE  first_name LIKE ’s____%s’;
 
 - Displaying **7** of **11** results.
 
+
 **4. Show patient_id, first_name, last_name from patients whose diagnosis is 'Dementia'.
 Primary diagnosis is stored in the admissions table.**
+```sql
+SELECT patients.patient_id, first_name, last_name
+FROM   patients
+JOIN   admissions
+    ON patients.patient_id = admissions.patient_id
+WHERE  diagnosis = 'Dementia';
+```
+
+**Steps:**
+- **SELECT** specific columns and specify what table to pick `patient_id` from as both `patients` and `admissions` tables contain it.
+- We will have to **JOIN** the `admissions` table to `patients` table as it contains separate admission values.
+- `patients.patient_id` contains table and column to merge. `patient_id` is the **primary key** of `patients` table and **foregin key** of `admissions` resulting in `admissions.patient_id`.
+- Further filtering patients who were diagnosed with 'dementia'.
+
+**Solution:**
+|  patient_id  |  first_name  |  last_name  |
+|  :---:       |  :---:       |    :---:    |
+| 160          |  Miranda     |  Delacour   |
+| 178          |  David       |  Bustamonte |
+| 207          |  Matt        |  Celine     |
+| 613          |  Jaki        |  Granger    |
+| 836          |  Montana     |  Vimes      |
+| 924          |  Simon       |  Spellman   |
+| 1201         |  Irene       |  Murphy     |
+| 1264         |  Jillian     |  Vakentine  |
+
+- Displaying **8** of **26** results.
+- Only 26 patients were diagnosed with dementia.
+
 
 **5. Display every patient's first_name.
 Order the list by the length of each name and then alphabetically.**
+```sql
+SELECT first_name
+FROM   patients
+ORDER BY LEN (first_name), first_name;
+```
+
+**Steps:**
+- **ORDERING BY** `first_name` first and attaching **LENGTH** function to filter names by their character length first and alphabetically second with `first_name`.
+
+**Solution:**
+|  first_name  |
+|  :---:       |
+| Al           |
+| Al           |
+| Al           |
+| Bo           |
+| Abe          |
+| Abi          |
+
+- Displaying **6** of **4530** results.
+
 
 **6. Show the total amount of male patients and the total amount of female patients in the patients table.
 Display the two results in the same row.**
+```sql
+SELECT
+      (SELECT COUNT (gender) FROM patients WHERE gender = 'M') AS male_patients,
+      (SELECT COUNT (gender) FROM patients WHERE gender = 'F') AS female_patients
+```
+
+**Steps:**
+- Need to perform sub-queries - queries nested inside a query.
+- Sub-queries help us display the **COUNT** aggregate function from `gender` column in `patients` table and `gender` is 'M' in one row. Naming the result column as `male_patients`.
+- The process is repeated with resulting `female_patients` column.
+
+**Solution:**
+|  male_patients  |  female_patients  |
+|      :---:      |       :---:       |
+|       2468      |        2062       |
+
+- There are 2468 male and 2062 female patients.
+
 
 **7. Show first and last name, allergies from patients which have allergies to either 'Penicillin' or 'Morphine'.
 Show results ordered ascending by allergies then by first_name then by last_name.**
+```sql
+SELECT first_name, last_name, allergies
+FROM   patients
+WHERE  allergies = 'Penicillin'
+   OR  allergies = 'Morphine'
+ORDER BY allergies ASC, first_name, last_name;
+```
+
+**Steps:**
+- Filter `allergies` results **WHERE** the patient has 'Penicillin' or 'Morphine'.
+- **ORDER** results in specified order - `allergies` ascending first, `first_name` second, and `last_name` third.
+
+**Solution:**
+|  first_name  |  last_name  |  allergies  |
+|  :---:       |  :---:      |    :---:    |
+| Briareos     |  Hayes      |  Morphine   |
+| Christine    |  Argyros    |  Morphine   |
+| Griselda     |  Hopper     |  Morphine   |
+| Henry        |  Huang      |  Morphine   |
+| Janice       |  Redfield   |  Morphine   |
+| Jesse        |  Garnaccia  |  Morphine   |
+| Joel         |  Takata     |  Morphine   |
+
+- Displaying **7** of **1104** results.
+
 
 **8. Show patient_id, diagnosis from admissions. Find patients admitted multiple times for the same diagnosis.**
+```sql
+SELECT patient_id, diagnosis
+FROM   admissions
+GROUP BY patient_id, diagnosis
+     HAVING COUNT (diagnosis) > 1;
+```
+
+**Steps:**
+- **GROUPING** results from `patient_id` and `diagnosis` columns.
+- First by `patient_id` where patients could have been admitted more than once.
+- Then by 'diagnosis' where a patient could have been admitted more than once with the same diagnosis.
+- The **HAVING** clause filters results further to patients having the same `diagnosis` more than once with **COUNT**.
+
+**Solution:**
+|  male_patients  |          female_patients            |
+|      :---:      |               :---:                 |
+|       137       |    Pregnancy                        |
+|       320       |    Pneumonia                        |
+|       1577      |  Congestive Heart Failure           |
+|       2004      |  Left Shoulder Rotator Cuff Repair  |
+|       2859      |        Severed Spine At C3          |
+
+- Displaying **5** of **11** results.
+
 
 **9. Show the city and the total number of patients in the city. Order from most to least patients and then by city name ascending.**
+```sql
+SELECT city, COUNT (city) AS total
+FROM   patients
+GROUP BY city
+ORDER BY total DESC, city ASC;
+```
 
-**10. Show first name, last name and role of every person that is either a patient or doctor. The roles are either "Patient" or "Doctor".**
+**Steps:**
+- **SELECTING** `city` column and also performing **COUNT** aggregate expression with same column.
+- **GROUPING** by `city` column to filter cities by patient origin.
+- Finally **ORDERING** by descending `total` **alias** result column and ascending `city`.
 
-**11. Show all allergies ordered by popularity. Remove 'NKA' and NULL values from query.**
+**Solution:**
+|  male_patients   |  female_patients  |
+|      :---:       |       :---:       |
+|      Hamilton    |        1938       |
+|      Toronto     |        317        |
+|      Burlington  |        276        |
+|      Brantford   |        147        |
+|      Ancaster    |        117        |
 
-**12. Show all patient's first name, last name, and birth date who were born in the 1970s decade. Sort the listing from the earliest birth_date.**
-
-**13. We want to display each patient's full name in a single column. Their last name in all upper letters must appear first, then first name in all lower case letters. Separate the last_name and first_name with a comma. Order the list by the first_name in descending order.**
-- EX: SMITH,jane
-
-**14. Show the province_id(s), sum of height; where the total sum of its patient's height is greater than or equal to 7,000.**
-
-**15. Show the difference between the largest weight and smallest weight for patients with the last name 'Maroni'.**
-
-**16. Show all of the days of the month (1-31) and how many admission_dates occured on that day. Sort by the day with most admissions to least admissions.**
-
-**17. Show all columns for patient_id 542's most recent admission_date.**
-
-**18. Show patient_id, attending_doctor_id, and diagnosis for admissions that match one of the two criteria:**
-- patient_id is an odd number and attending_doctor_id is either 1, 5, or 19.
-- attending_doctor_id contains a 2 and the length of patient_id is 3 characters.
-
-**19. Show first name, last name, and the total number of admissions attended for each doctor. Every admission has been attended by a doctor.**
-
-**20. For each doctor, display their id, full name, and the first and last admission date they attended.**
-
-**21. Display the total amount of patients for each province. Order by descending.**
-
-**22. For each admission, display the patient's full name, their admission diagnosis, and their doctor's full name who diagnosed their problem.**
-
-**23. Display the number of duplicate patients based on their first name and last name.**
-- Example: A patient with an identical name can be considered a duplicate.
-
-**24. Display patient's full name, height in the unit feet rounded to 1 decimal, weight in the unit pounds rounded to 0 decimals, birth_date, gender non-abbreviated.**
-- Convert CM to feet by dividing by 30.48.
-- Conver KG to pounds by multiplying by 2.205.
-
-**25. Show patient_id, first_name, last_name from patients whose does not have any records in the admissions table.** 
-- (Their patient_id does not exist in any admissions.patient_id rows.)
+- Displaying **5** of **93** results.

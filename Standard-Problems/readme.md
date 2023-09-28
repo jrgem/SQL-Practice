@@ -248,3 +248,29 @@ ORDER BY total DESC, city ASC;
 
 
 **10. Show first name, last name and role of every person that is either a patient or doctor. The roles are either "Patient" or "Doctor".**
+```sql
+SELECT first_name, last_name, ('Patient' AS role)
+FROM patients
+UNION ALL
+SELECT first_name, last_name, ('Doctor' AS role)
+FROM doctors
+```
+
+**Steps:**
+- Make use of **UNION ALL** function to combine `patients` and `doctors` tables and columns `first_name` and `last_name` contain similar data type fields.
+- **UNION ALL** includes duplicate values whereas **UNION** only includes unique values.
+- Create new `row` column for each table clarifying whether the person is a 'patient' or 'doctor'.
+
+**Solution:**
+|  first_name  |  last_name   |  role     |
+|  :---:       |  :---:       |    :---:  |
+| Donald       |  Waterfield  |  Patient  |
+| Mickey       |  Baasha      |  Patient  |
+| Jiji         |  Sharma      |  Patient  |
+| Blair        |  Diaz        |  Patient  |
+| Claude       |  Walls       |  Doctor   |
+| Joshua       |  Green       |  Doctor   |
+| Miriam       |  Tregre      |  Doctor   |
+| James        |  Russo       |  Doctor   |
+
+- Displaying **8** of **4557** results.

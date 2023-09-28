@@ -245,3 +245,6 @@ ORDER BY total DESC, city ASC;
 |      Ancaster    |        117        |
 
 - Displaying **5** of **93** results.
+
+
+**10. Show first name, last name and role of every person that is either a patient or doctor. The roles are either "Patient" or "Doctor".**

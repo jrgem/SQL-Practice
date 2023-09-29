@@ -303,3 +303,38 @@ ORDER BY total_patients DESC;
 
 - Displaying **6** of **62** results.
 - Penicillin is the most popular allergy among patients.
+
+
+**12. Show all patient's first name, last name, and birth date who were born in the 1970s decade. Sort the listing from the earliest birth_date.**
+```sql
+SELECT first_name, last_name, birth_date
+FROM   patients
+WHERE  birth_date BETWEEN '1970-01-01' AND '1979-12-31'
+ORDER BY birth_date
+```
+OR
+```sql
+WHERE YEAR (birth_date) BETWEEN '1970' AND '1979'
+```
+
+**Steps:**
+- Key is to filter patient `birth_date` using **WHERE** and pairing it with **BETWEEN** operator to set date frame.
+- Can be executed by inputing specific birth dates OR taking **YEAR** from `birth_date` and selecting years.
+
+**Solution:**
+|  first_name  |  last_name   |  birth_date  |
+|  :---:       |  :---:       |    :---:     |
+| Frances      |  Kobayakawa  |  1970-01-02  |
+| Sunny        |  Burrell     |  1970-01-07  |
+| Penelope     |  Beckett     |  1970-01-14  |
+| Deborah      |  Stewart     |  1970-01-14  |
+| Agusta       |  Decker      |  1970-01-22  |
+| Sookie       |  Bearly      |  1970-02-01  |
+| Temple       |  Wylie       |  1970-02-10  |
+
+- Displaying **7** of **623** results.
+- There are 623 patients born in the 1970s decade.
+
+
+**13. We want to display each patient's full name in a single column. Their last name in all upper letters must appear first, then first name in all lower case letters. Separate the last_name and first_name with a comma. Order the list by the first_name in descending order.
+(Example: SMITH,jane)**

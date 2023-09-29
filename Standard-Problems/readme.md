@@ -338,3 +338,29 @@ WHERE YEAR (birth_date) BETWEEN '1970' AND '1979'
 
 **13. We want to display each patient's full name in a single column. Their last name in all upper letters must appear first, then first name in all lower case letters. Separate the last_name and first_name with a comma. Order the list by the first_name in descending order.
 (Example: SMITH,jane)**
+```sql
+SELECT CONCAT (UPPER (last_name), ',', LOWER (first_name)) AS full_name
+FROM patients
+ORDER BY first_name DESC;
+```
+
+**Steps:**
+- In column selection, **CONCAT** function combines `last_name` and `first_name` values into a single string.
+- However, we need to transform `last_name` values into all upper case using **UPPER** and `first_name` values into lower case using **LOWER**.
+- Both separated by a **comma** / **,** with no space in between.
+- **ORDER** final results by `first_name` in **descending** manner. Patients with first names starting with z will be displayed first.
+
+**Solution:**
+|  first_name           |
+|  :---:                |
+| MILLER,zoe            |
+| CORBIE,ziva           |
+| KOBAYAKAWA,zenigata   |
+| OVERSTREET,zenigata   |
+| BENNETT,zen           |
+| MEPHESTO,zelda        |
+
+- Displaying **6** of **4530** results.
+
+
+**14. Show the province_id(s), sum of height; where the total sum of its patient's height is greater than or equal to 7,000.**

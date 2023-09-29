@@ -379,3 +379,21 @@ GROUP BY province_id
 |      BC            |        7720       |
 |      NS            |        9765       |
 |      ON            |        678037     |
+
+
+**15. Show the difference between the largest weight and smallest weight for patients with the last name 'Maroni'.**
+```sql
+SELECT (MAX (weight) - MIN (weight)) AS weight_difference
+FROM   patients
+WHERE last_name = 'Maroni';
+```
+
+**Steps:**
+
+**Solution:**
+|  weight_difference  |
+|  :---:              |
+| 71                  |
+
+
+**16. Show all of the days of the month (1-31) and how many admission_dates occured on that day. Sort by the day with most admissions to least admissions.**

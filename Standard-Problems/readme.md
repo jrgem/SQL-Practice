@@ -250,10 +250,10 @@ ORDER BY total DESC, city ASC;
 **10. Show first name, last name and role of every person that is either a patient or doctor. The roles are either "Patient" or "Doctor".**
 ```sql
 SELECT first_name, last_name, ('Patient' AS role)
-FROM patients
+FROM   patients
 UNION ALL
 SELECT first_name, last_name, ('Doctor' AS role)
-FROM doctors
+FROM   doctors
 ```
 
 **Steps:**
@@ -274,3 +274,32 @@ FROM doctors
 | James        |  Russo       |  Doctor   |
 
 - Displaying **8** of **4557** results.
+
+
+**11. Show all allergies ordered by popularity. Remove NULL values from query.**
+```sql
+SELECT allergies, COUNT (allergies) AS total_patients
+FROM   patients
+GROUP BY allergies
+  HAVING allergies IS NOT NULL
+ORDER BY total_patients DESC;
+```
+
+**Steps:**
+- **SELECT** `allergies` and also perform **COUNT** aggregate expression with the same column. Its results will lie on the new `total_patients` column.
+- **GROUP BY** function groups `allergies` and NULL values will be taken into account aswell.
+- **HAVING** operator will select grouped `allergies` that are not **NULL**.
+- We order patient allergies off popularity (which condition is displayed more) by the new `total_patients` column in a **descending** manner.
+
+**Solution:**
+|      allergies   |  total_patients   |
+|      :---:       |       :---:       |
+|      Penicillin  |        1082       |
+|      Codeine     |        305        |
+|      Sulfa       |        157        |
+|      ASA         |        99         |
+|     Sulfa Drugs  |        71         |
+|      Peanuts     |        52         |
+
+- Displaying **6** of **62** results.
+- Penicillin is the most popular allergy among patients.

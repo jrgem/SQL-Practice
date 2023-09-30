@@ -5,6 +5,7 @@
 + [Entity](https://github.com/jrgem/SQL-Practice/tree/main/Standard-Problems#entity-relationship-schema)
 + [Questions](https://github.com/jrgem/SQL-Practice/tree/main/Standard-Problems#questions--solution)
 
+
 ## Task
 Use hospital database data to answer standard-level questions about patients, admissions and doctors.                   
 

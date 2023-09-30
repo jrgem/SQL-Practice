@@ -3,6 +3,7 @@
 ## Table of Contents
 + [Task](https://github.com/jrgem/SQL-Practice/tree/main/Standard-Problems#task)
 + [Entity](https://github.com/jrgem/SQL-Practice/tree/main/Standard-Problems#entity-relationship-schema)
++ [Questions](https://github.com/jrgem/SQL-Practice/tree/main/Standard-Problems#questions-&-solution)
 
 ## Task
 Use hospital database data to answer standard-level questions about patients, admissions and doctors.                   
@@ -12,6 +13,7 @@ Use hospital database data to answer standard-level questions about patients, ad
 <img width="689" alt="table-entity" src="https://github.com/jrgem/SQL-Practice/assets/145512344/f513a598-f51e-4903-b1fd-a30c5952e124">
 </p>
 
+## Questions & Solution
 ### **1. Show unique birth years from patients and order them by ascending.**
 ```sql
 SELECT DISTINCT YEAR(birth_date) AS birth_year

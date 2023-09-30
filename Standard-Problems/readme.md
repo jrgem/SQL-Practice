@@ -37,8 +37,8 @@ GROUP BY birth_year;
 - Displaying **6** of **93** results.
 
 
-### **2. Show unique first names from the patients table which only occurs once in the list.
-For example, if two or more people are named 'John' in the first_name column then don't include their name in the output list. If only 1 person is named 'Leo' then include them in the output.**
+### **2. Show unique first names from the patients table which only occurs once in the list.**
+**For example, if two or more people are named 'John' in the first_name column then don't include their name in the output list. If only 1 person is named 'Leo' then include them in the output.**
 ```sql
 SELECT first_name
 FROM   patients
@@ -91,8 +91,8 @@ WHERE  first_name LIKE ’s____%s’;
 - Displaying **7** of **11** results.
 
 
-### **4. Show patient_id, first_name, last_name from patients whose diagnosis is 'Dementia'.
-Primary diagnosis is stored in the admissions table.**
+### **4. Show patient_id, first_name, last_name from patients whose diagnosis is 'Dementia'.**
+**Primary diagnosis is stored in the admissions table.**
 ```sql
 SELECT patients.patient_id, first_name, last_name
 FROM   patients
@@ -123,8 +123,8 @@ WHERE  diagnosis = 'Dementia';
 - Only 26 patients were diagnosed with dementia.
 
 
-### **5. Display every patient's first_name.
-Order the list by the length of each name and then alphabetically.**
+### **5. Display every patient's first_name.**
+**Order the list by the length of each name and then alphabetically.**
 ```sql
 SELECT first_name
 FROM   patients
@@ -147,8 +147,8 @@ ORDER BY LEN (first_name), first_name;
 - Displaying **6** of **4530** results.
 
 
-### **6. Show the total amount of male patients and the total amount of female patients in the patients table.
-Display the two results in the same row.**
+### **6. Show the total amount of male patients and the total amount of female patients in the patients table.**
+**Display the two results in the same row.**
 ```sql
 SELECT
       (SELECT COUNT (gender) FROM patients WHERE gender = 'M') AS male_patients,
@@ -168,8 +168,8 @@ SELECT
 - There are 2468 male and 2062 female patients.
 
 
-### **7. Show first and last name, allergies from patients which have allergies to either 'Penicillin' or 'Morphine'.
-Show results ordered ascending by allergies then by first_name then by last_name.**
+### **7. Show first and last name, allergies from patients which have allergies to either 'Penicillin' or 'Morphine'.**
+**Show results ordered ascending by allergies then by first_name then by last_name.**
 ```sql
 SELECT first_name, last_name, allergies
 FROM   patients
@@ -336,8 +336,7 @@ WHERE YEAR (birth_date) BETWEEN '1970' AND '1979'
 - There are 623 patients born in the 1970s decade.
 
 
-### **13. We want to display each patient's full name in a single column. Their last name in all upper letters must appear first, then first name in all lower case letters. Separate the last_name and first_name with a comma. Order the list by the first_name in descending order.
-(Example: SMITH,jane)**
+### **13. We want to display each patient's full name in a single column. Their last name in all upper letters must appear first, then first name in all lower case letters. Separate the last_name and first_name with a comma. Order the list by the first_name in descending order. (Example: SMITH,jane)**
 ```sql
 SELECT CONCAT (UPPER (last_name), ',', LOWER (first_name)) AS full_name
 FROM patients
@@ -447,3 +446,7 @@ HAVING   patient_id = '542'
 |     542      |    2019-04-06    |   2019-04-09    |  Abdominal Pain  |           14          |
 
 
+### **18. Show patient_id, attending_doctor_id, and diagnosis for admissions that match one of the two criteria:**
+**1) patient_id is an odd number and attending_doctor_id is either 1, 5, or 19.**
+
+**2) attending_doctor_id contains a 2 and the length of patient_id is 3 characters.**

@@ -500,5 +500,5 @@ GROUP BY attending_doctor_id;
 - Displaying **7** of **27** results.
 
 
-
+### **20. For each doctor, display their id, full name, and the first and last admission date they attended.**
 

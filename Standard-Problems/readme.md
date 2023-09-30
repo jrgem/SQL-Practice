@@ -450,3 +450,55 @@ HAVING   patient_id = '542'
 **1) patient_id is an odd number and attending_doctor_id is either 1, 5, or 19.**
 
 **2) attending_doctor_id contains a 2 and the length of patient_id is 3 characters.**
+```sql
+SELECT patient_id, attending_doctor_id, diagnosis
+FROM   admissions
+WHERE  (patient_id % 2 = 1
+         AND attending_doctor_id IN (1, 5, 19))
+OR     (attending_doctor_id LIKE '%2%'
+         AND LEN (patient_id) = 3);
+```
+
+**Steps:**
+
+**Solution:**
+|  patient_id  |  attending_doctor_id   |  diagnosis               |
+|  :---:       |  :---:                 |    :---:                 |
+|    9         |  19                    |  Ruptured Appendicitis   |
+|   13         |  1                     |  Renal Failure           |
+|   15         |  5                     |  Hiatal Hernia           |
+|   31         |  19                    |  Cardiovascular Disease  |
+|   51         |  1                     |  Undiagnosed Chest Pain  |
+|   100        |  22                    |  Deppression, Dementia   |
+|   100        |  21                    |  Repiratory Failure      |
+
+- Displaying **7** of **663** results.
+
+
+### **19. Show first name, last name, and the total number of admissions attended for each doctor. Every admission has been attended by a doctor.**
+```sql
+SELECT doctors.first_name, doctors.last_name, COUNT (attending_doctor_id) AS attended_admissions
+FROM   admissions
+JOIN   doctors
+ ON    admissions.attending_doctor_id = doctors.doctor_id
+GROUP BY attending_doctor_id;
+```
+
+**Steps:**
+
+**Solution:**
+|  first_name  |  last_name   |  attended_admissions  |
+|  :---:       |  :---:       |    :---:              |
+| Claude       |  Walls       |  214                  |
+| Joshua       |  Green       |  187                  |
+| Miriam       |  Tregre      |  168                  |
+| James        |  Russo       |  197                  |
+| Scott        |  Hill        |  179                  |
+| Tasha        |  Phillips    |  168                  |
+| Hazel        |  Patterson   |  206                  |
+
+- Displaying **7** of **27** results.
+
+
+
+

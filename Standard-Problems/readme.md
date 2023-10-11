@@ -505,3 +505,7 @@ GROUP BY attending_doctor_id;
 
 ### **20. For each doctor, display their id, full name, and the first and last admission date they attended.**
 
+### **21. Display the total amount of patients for each province. Order by descending.**
+
+### **22. For each admission, display the patient's full name, their admission diagnosis, and their doctor's full name who diagnosed their problem.**
+
